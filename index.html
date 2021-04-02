@@ -25,7 +25,7 @@
 							<button type="button" id="convertBtn" data-loading-text="처리중..." class="btn btn-primary" autocomplete="off">채점</button>
 						</div>
 					</div>
-					<div id=answer></div>
+					<pre id=answer></pre>
 					<div class="form-group" id="result">
 						<label class="col-sm-1 control-label">비교</label>
 						<div class="col-sm-10">
@@ -50,12 +50,12 @@
 					var $btn = $(this).button('loading');
 					$("#answer").load("/memorization-test/answer.txt");
 					$("#result div").prettyTextDiff({
-						originalContent: $(".answer").text().replace(/</gi, "&lt;").replace(/>/gi, "&gt;").replace(/ /gi, "&nbsp;"),
+						originalContent: $("#answer").text().replace(/</gi, "&lt;").replace(/>/gi, "&gt;").replace(/ /gi, "&nbsp;"),
 						changedContent: $(".changed").val().replace(/</gi, "&lt;").replace(/>/gi, "&gt;").replace(/ /gi, "&nbsp;"),
 						diffContainer: ".diff"
 					});
 					$('.picadiff').picadiff({
-							leftContent: $(".answer").text().replace(/</gi, "&lt;").replace(/>/gi, "&gt;").replace(/\n/gi, "<br> "),
+							leftContent: $("#answer").text().replace(/</gi, "&lt;").replace(/>/gi, "&gt;").replace(/\n/gi, "<br> "),
 							rightContent: $(".changed").val().replace(/</gi, "&lt;").replace(/>/gi, "&gt;").replace(/\n/gi, "<br> "),
 							lineLength: 5000,
 							timeout: 1
