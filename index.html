@@ -50,7 +50,7 @@
 					var $btn = $(this).button('loading');
 					$("#answer").load("/memorization-test/answer.txt");
 					const answser = document.getElementById("answer");
-					answser.innerHTML = answser.innerHTML.replace(/\n/gi, "<br> ");
+					answser.innerHTML = answser.innerHTML.replace(/\n/g, "<br> ");
 					$("#result div").prettyTextDiff({
 						originalContent: answser.innerHTML.replace(/</gi, "&lt;").replace(/>/gi, "&gt;").replace(/ /gi, "&nbsp;"),
 						changedContent: $(".changed").val().replace(/</gi, "&lt;").replace(/>/gi, "&gt;").replace(/ /gi, "&nbsp;"),
