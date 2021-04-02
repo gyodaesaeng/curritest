@@ -14,27 +14,19 @@
 		  </style>
 	</head>
 	<body>
-		<main>
+		<textarea class="form-control vresize changed" rows="10"></textarea>
+		<div class="form-group">
+			<button type="button" id="compareButton" data-loading-text="처리중..." class="btn btn-primary" autocomplete="off">정답 보기</button>
+		</div>
+		<div class="form-group" id="result">
+			<label>정답</label>
+			<pre id=answer></pre>
+			<button type="button" id="diffButton" data-loading-text="처리중..." class="btn btn-primary" autocomplete="off">채점 하기</button>
+			<label>결과</label>
 			<div>
-				<form>
-					<div class="col-sm-5">
-						<textarea class="form-control vresize changed" rows="10"></textarea>
-					</div>
-					<div class="form-group">
-						<div class="col-sm-offset-1 col-sm-10">
-							<button type="button" id="convertBtn" data-loading-text="처리중..." class="btn btn-primary" autocomplete="off">채점</button>
-						</div>
-					</div>
-					<pre id=answer></pre>
-					<div class="form-group" id="result">
-						<label class="col-sm-1 control-label">비교</label>
-						<div class="col-sm-10">
-							<div class="diff well well-sm" style="overflow:scroll;"></div>
-						</div>
-					</div>
-				</form>
+				<div class="diff well well-sm" style="overflow:scroll;"></div>
 			</div>
-		</main>
+		</div>
 		<script src="/memorization-test/js/include.js"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.js"></script>
@@ -45,23 +37,27 @@
 		<script src="/memorization-test/js/jquery.pretty-text-diff.min.js"></script>
 		<script src="/memorization-test/js/jquery.picadiff-0.7.1.min.js"></script>
 		<script>
-			$(document).ready(function(){
-				$('#convertBtn').on('click', function(){
-					var $btn = $(this).button('loading');
-					$("#answer").load("/memorization-test/answer.txt");
-					$("#result div").prettyTextDiff({
-						originalContent: $("#answer").text().replace(/</gi, "&lt;").replace(/>/gi, "&gt;").replace(/ /gi, "&nbsp;"),
-						changedContent: $(".changed").val().replace(/</gi, "&lt;").replace(/>/gi, "&gt;").replace(/ /gi, "&nbsp;"),
-						diffContainer: ".diff"
-					});
-					$('.picadiff').picadiff({
-							leftContent: $("#answer").text().replace(/</gi, "&lt;").replace(/>/gi, "&gt;").replace(/\n/gi, "<br> "),
-							rightContent: $(".changed").val().replace(/</gi, "&lt;").replace(/>/gi, "&gt;").replace(/\n/gi, "<br> "),
-							lineLength: 5000,
-							timeout: 1
-						});
-					$btn.button('reset');
+			$("#result").hide();
+			$('#compareButton').click(function(){
+				var $button = $(this).button('loading');
+				$("#result").show();
+				$("#answer").load("/memorization-test/answer.txt");
+				$button.button('reset');
+			});
+			$('#diffButton').click(function(){
+				var $button = $(this).button('loading');
+				$("#result div").prettyTextDiff({
+					originalContent: $("#answer").text().replace(/</gi, "&lt;").replace(/>/gi, "&gt;").replace(/ /gi, "&nbsp;"),
+					changedContent: $(".changed").val().replace(/</gi, "&lt;").replace(/>/gi, "&gt;").replace(/ /gi, "&nbsp;"),
+					diffContainer: ".diff"
 				});
+				$('.picadiff').picadiff({
+					leftContent: $("#answer").text().replace(/</gi, "&lt;").replace(/>/gi, "&gt;").replace(/\n/gi, "<br> "),
+					rightContent: $(".changed").val().replace(/</gi, "&lt;").replace(/>/gi, "&gt;").replace(/\n/gi, "<br> "),
+					lineLength: 5000,
+					timeout: 1
+				});
+				$button.button('reset');
 			});
 		</script>
 	</body>
