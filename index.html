@@ -22,7 +22,7 @@
 					</div>
 					<div class="form-group">
 						<div class="col-sm-offset-1 col-sm-10">
-							<button type="button" id="convertBtn" data-loading-text="처리중..." class="btn btn-primary" autocomplete="off">변환</button>
+							<button type="button" id="convertBtn" data-loading-text="처리중..." class="btn btn-primary" autocomplete="off">채점</button>
 						</div>
 					</div>
 					<div id=answer></div>
@@ -48,16 +48,14 @@
 			$(document).ready(function(){
 				$('#convertBtn').on('click', function(){
 					var $btn = $(this).button('loading');
-					$("#answer").load("/memorization-test/answer.txt");
-					const answser = document.getElementById("answer");
-					answser.innerHTML = answser.innerHTML.replace(/\n/g, "<br> ");
+					$(".answer").load("/memorization-test/answer.txt");
 					$("#result div").prettyTextDiff({
-						originalContent: answser.innerHTML.replace(/</gi, "&lt;").replace(/>/gi, "&gt;").replace(/ /gi, "&nbsp;"),
+						originalContent: $(".answer").val().replace(/</gi, "&lt;").replace(/>/gi, "&gt;").replace(/ /gi, "&nbsp;"),
 						changedContent: $(".changed").val().replace(/</gi, "&lt;").replace(/>/gi, "&gt;").replace(/ /gi, "&nbsp;"),
 						diffContainer: ".diff"
 					});
 					$('.picadiff').picadiff({
-							leftContent: answser.innerHTML.replace(/</gi, "&lt;").replace(/>/gi, "&gt;").replace(/\n/gi, "<br> "),
+							leftContent: $(".answer").val().replace(/</gi, "&lt;").replace(/>/gi, "&gt;").replace(/\n/gi, "<br> "),
 							rightContent: $(".changed").val().replace(/</gi, "&lt;").replace(/>/gi, "&gt;").replace(/\n/gi, "<br> "),
 							lineLength: 5000,
 							timeout: 1
