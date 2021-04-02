@@ -52,7 +52,7 @@
 					diffContainer: ".diff"
 				});
 				var result = document.getElementById("result");
-				result.innerHTML = result.innerHTML.replace(/<br>/, "<br><br>");
+				result.innerHTML = result.innerHTML.replace(/<br>/gi, "<br><br>");
 				$button.button('reset');
 			});
 		</script>
