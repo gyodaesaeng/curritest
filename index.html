@@ -16,7 +16,7 @@
 	<body>
 		<textarea class="form-control vresize changed" rows="10" style="width: 100%;"></textarea>
 		<div class="form-group" id="result">
-			<button type="button" id="diffButton" data-loading-text="처리중..." class="btn btn-primary" autocomplete="off">채점 하기</button>
+			<button type="button" id="diffButton" class="btn btn-primary" autocomplete="off">채점 하기</button>
 			<div>
 				<div class="diff well well-sm" style="overflow:scroll;"></div>
 			</div>
@@ -32,7 +32,6 @@
 		<script src="/memorization-test/js/jquery.picadiff-0.7.1.min.js"></script>
 		<script>
 			$('#diffButton').click(function(){
-				var button = $(this).button('loading');
 				var xmlHttp = new XMLHttpRequest();
 				xmlHttp.onreadystatechange = function() {
 					if(this.status == 200 && this.readyState == this.DONE) {
@@ -43,7 +42,6 @@
 						});
 						var result = document.getElementById("result");
 						result.innerHTML = result.innerHTML.replace(/<br>/gi, "<br><br>");
-						button.button('reset');
 					}
 				};
 				xmlHttp.open("GET", "/memorization-test/answer.txt", true);
