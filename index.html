@@ -15,8 +15,8 @@
 	</head>
 	<body>
 		<main>
-			<div class="container">
-				<form class="form-horizontal">
+			<div>
+				<form>
 					<div class="form-group">
 						<label>원본</label>
 						<div class="col-sm-5">
@@ -37,17 +37,6 @@
 							<div class="diff well well-sm" style="overflow:scroll;"></div>
 						</div>
 					</div>
-					<div class="form-group" id="twoResult" style="display:none;">
-						<label class="col-sm-1 control-label">비교</label>
-						<div class="col-sm-10">
-							<div class="picadiff">
-								<div class="picadiff-content">
-										<div class="left well well-sm"></div>
-										<div class="right well well-sm"></div>
-								</div>
-							</div>
-						</div>
-					</div>
 				</form>
 			</div>
 		</main>
@@ -61,17 +50,18 @@
 		<script src="/memorization-test/js/jquery.pretty-text-diff.min.js"></script>
 		<script src="/memorization-test/js/jquery.picadiff-0.7.1.min.js"></script>
 		<script>
+			var reader = new FileReader();
+			reader.readAsText(File("/memorization-test/original.txt"), "utf-8");
 			$(document).ready(function(){
 				$('#convertBtn').on('click', function(){
 					var $btn = $(this).button('loading');
 					$("#oneResult div").prettyTextDiff({
-						originalContent: $(".original").val().replace(/</gi, "&lt;").replace(/>/gi, "&gt;").replace(/ /gi, "&nbsp;"),
+						originalContent: reader.result.replace(/</gi, "&lt;").replace(/>/gi, "&gt;").replace(/ /gi, "&nbsp;"),
 						changedContent: $(".changed").val().replace(/</gi, "&lt;").replace(/>/gi, "&gt;").replace(/ /gi, "&nbsp;"),
 						diffContainer: ".diff"
 					});
-					window.console.log($(".original").val());
 					$('.picadiff').picadiff({
-							leftContent: $(".original").val().replace(/</gi, "&lt;").replace(/>/gi, "&gt;").replace(/\n/gi, "<br> "),
+							leftContent: reader.result.replace(/</gi, "&lt;").replace(/>/gi, "&gt;").replace(/\n/gi, "<br> "),
 							rightContent: $(".changed").val().replace(/</gi, "&lt;").replace(/>/gi, "&gt;").replace(/\n/gi, "<br> "),
 							lineLength: 5000,
 							timeout: 1
