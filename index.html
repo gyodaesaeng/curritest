@@ -23,7 +23,7 @@
 			<pre id=answer></pre>
 			<button type="button" id="diffButton" data-loading-text="처리중..." class="btn btn-primary" autocomplete="off">채점 하기</button>
 			<div>
-				<div class="diff well well-sm" style="overflow:scroll;"></div>
+				<div class="diff well well-sm" style="overflow:scroll;line-height:100%;"></div>
 			</div>
 		</div>
 		<script src="/memorization-test/js/include.js"></script>
@@ -50,12 +50,6 @@
 					originalContent: $("#answer").text().replace(/</gi, "&lt;").replace(/>/gi, "&gt;").replace(/ /gi, "&nbsp;"),
 					changedContent: $(".changed").val().replace(/</gi, "&lt;").replace(/>/gi, "&gt;").replace(/ /gi, "&nbsp;"),
 					diffContainer: ".diff"
-				});
-				$('.picadiff').picadiff({
-					leftContent: $("#answer").text().replace(/</gi, "&lt;").replace(/>/gi, "&gt;").replace(/\n/gi, "<br> <br> "),
-					rightContent: $(".changed").val().replace(/</gi, "&lt;").replace(/>/gi, "&gt;").replace(/\n/gi, "<br> <br> "),
-					lineLength: 5000,
-					timeout: 1
 				});
 				$button.button('reset');
 			});
