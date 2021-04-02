@@ -8,7 +8,7 @@
 			<div class="container">
 				<form class="form-horizontal">
 					<div class="form-group">
-						<label class="col-sm-1 control-label">원본</label>
+						<label>원본</label>
 						<div class="col-sm-5">
 							<textarea class="form-control vresize original" rows="10"></textarea>
 						</div>
@@ -39,18 +39,8 @@
 						</div>
 					</div>
 				</form>
-
-				<div class="row">
-					<div class="col-md-10 col-md-offset-1">
-						<hr/>
-						<hr/>
-					</div>
-				</div>
 			</div>
 		</main>
-
-		<footer w3-include-html="/includes/footer.html"></footer>
-
 		<script src="/memorization-test/js/include.js"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.js"></script>
@@ -62,8 +52,6 @@
 		<script src="/memorization-test/js/jquery.picadiff-0.7.1.min.js"></script>
 		<script>
 			$(document).ready(function(){
-
-				// 변환 버튼
 				$('#convertBtn').on('click', function(){
 					var $btn = $(this).button('loading');
 					$("#oneResult div").prettyTextDiff({
