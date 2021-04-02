@@ -50,12 +50,12 @@
 					var $btn = $(this).button('loading');
 					$("#answer").load("/memorization-test/answer.txt");
 					$("#result div").prettyTextDiff({
-						originalContent: $("#answer").val().replace(/</gi, "&lt;").replace(/>/gi, "&gt;").replace(/ /gi, "&nbsp;"),
+						originalContent: $(".answer").val().replace(/</gi, "&lt;").replace(/>/gi, "&gt;").replace(/ /gi, "&nbsp;"),
 						changedContent: $(".changed").val().replace(/</gi, "&lt;").replace(/>/gi, "&gt;").replace(/ /gi, "&nbsp;"),
 						diffContainer: ".diff"
 					});
 					$('.picadiff').picadiff({
-							leftContent: $("#answer").val().replace(/</gi, "&lt;").replace(/>/gi, "&gt;").replace(/\n/gi, "<br> "),
+							leftContent: $(".answer").val().replace(/</gi, "&lt;").replace(/>/gi, "&gt;").replace(/\n/gi, "<br> "),
 							rightContent: $(".changed").val().replace(/</gi, "&lt;").replace(/>/gi, "&gt;").replace(/\n/gi, "<br> "),
 							lineLength: 5000,
 							timeout: 1
