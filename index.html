@@ -32,7 +32,7 @@
 		<script src="/memorization-test/js/jquery.picadiff-0.7.1.min.js"></script>
 		<script>
 			$('#diffButton').click(function(){
-				var $button = $(this).button('loading');
+				var button = $(this).button('loading');
 				var xmlHttp = new XMLHttpRequest();
 				xmlHttp.onreadystatechange = function() {
 					if(this.status == 200 && this.readyState == this.DONE) {
@@ -43,7 +43,7 @@
 						});
 						var result = document.getElementById("result");
 						result.innerHTML = result.innerHTML.replace(/<br>/gi, "<br><br>");
-						$button.button('reset');
+						button.button('reset');
 					}
 				};
 				xmlHttp.open("GET", "/memorization-test/answer.txt", true);
