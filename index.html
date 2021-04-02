@@ -45,6 +45,7 @@
 				$button.button('reset');
 			});
 			$('#diffButton').click(function(){
+				console.log("diffButton click");
 				var $button = $(this).button('loading');
 				$("#result div").prettyTextDiff({
 					originalContent: $("#answer").text().replace(/</gi, "&lt;").replace(/>/gi, "&gt;").replace(/ /gi, "&nbsp;"),
