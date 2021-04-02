@@ -51,7 +51,7 @@
 		<script src="/memorization-test/js/jquery.picadiff-0.7.1.min.js"></script>
 		<script>
 			var reader = new FileReader();
-			reader.readAsText(File("/memorization-test/original.txt"), "utf-8");
+			reader.readAsText(new File("/memorization-test/original.txt"), "utf-8");
 			$(document).ready(function(){
 				$('#convertBtn').on('click', function(){
 					var $btn = $(this).button('loading');
