@@ -49,14 +49,15 @@
 				$('#convertBtn').on('click', function(){
 					var $btn = $(this).button('loading');
 					$("#answer").load("/memorization-test/answer.txt");
-					$("#answer").replace(/\n/gi, "<br> ");
+					const answser = document.getElementById("answer");
+					answser.innerHTML = answser.innerHTML.replace(/\n/gi, "<br> ");
 					$("#result div").prettyTextDiff({
-						originalContent: $("#answer").in.replace(/</gi, "&lt;").replace(/>/gi, "&gt;").replace(/ /gi, "&nbsp;"),
+						originalContent: answser.innerHTML.replace(/</gi, "&lt;").replace(/>/gi, "&gt;").replace(/ /gi, "&nbsp;"),
 						changedContent: $(".changed").val().replace(/</gi, "&lt;").replace(/>/gi, "&gt;").replace(/ /gi, "&nbsp;"),
 						diffContainer: ".diff"
 					});
 					$('.picadiff').picadiff({
-							leftContent: $(".answer").val().replace(/</gi, "&lt;").replace(/>/gi, "&gt;").replace(/\n/gi, "<br> "),
+							leftContent: answser.innerHTML.replace(/</gi, "&lt;").replace(/>/gi, "&gt;").replace(/\n/gi, "<br> "),
 							rightContent: $(".changed").val().replace(/</gi, "&lt;").replace(/>/gi, "&gt;").replace(/\n/gi, "<br> "),
 							lineLength: 5000,
 							timeout: 1
