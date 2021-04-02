@@ -52,8 +52,8 @@
 					diffContainer: ".diff"
 				});
 				$('.picadiff').picadiff({
-					leftContent: $("#answer").text().replace(/</gi, "&lt;").replace(/>/gi, "&gt;").replace(/\n/gi, "<br><br>"),
-					rightContent: $(".changed").val().replace(/</gi, "&lt;").replace(/>/gi, "&gt;").replace(/\n/gi, "<br><br>"),
+					leftContent: $("#answer").text().replace(/</gi, "&lt;").replace(/>/gi, "&gt;").replace(/\n/gi, "<br> <br> "),
+					rightContent: $(".changed").val().replace(/</gi, "&lt;").replace(/>/gi, "&gt;").replace(/\n/gi, "<br> <br> "),
 					lineLength: 5000,
 					timeout: 1
 				});
