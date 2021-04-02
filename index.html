@@ -48,7 +48,7 @@
 			$(document).ready(function(){
 				$('#convertBtn').on('click', function(){
 					var $btn = $(this).button('loading');
-					$(".answer").load("/memorization-test/answer.txt");
+					$("#answer").load("/memorization-test/answer.txt");
 					$("#result div").prettyTextDiff({
 						originalContent: $(".answer").text().replace(/</gi, "&lt;").replace(/>/gi, "&gt;").replace(/ /gi, "&nbsp;"),
 						changedContent: $(".changed").val().replace(/</gi, "&lt;").replace(/>/gi, "&gt;").replace(/ /gi, "&nbsp;"),
