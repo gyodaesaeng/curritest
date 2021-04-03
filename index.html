@@ -14,11 +14,11 @@
 		  </style>
 	</head>
 	<body>
-		<textarea class="form-control vresize changed" rows="10" style="width: 100%;"></textarea>
+		<textarea id = "answer" class="form-control vresize" rows="10" style="width: 100%;"></textarea>
 		<div class="form-group" id="result">
 			<button type="button" id="diffButton" class="btn btn-primary" autocomplete="off">채점 하기</button>
 			<div>
-				<div class="diff well well-sm" style="overflow:scroll;"></div>
+				<div class="diff"></div>
 			</div>
 		</div>
 		<script src="/memorization-test/js/include.js"></script>
@@ -36,8 +36,8 @@
 				xmlHttp.onreadystatechange = function() {
 					if(this.status == 200 && this.readyState == this.DONE) {
 						$("#result div").prettyTextDiff({
-							originalContent: xmlHttp.responseText.replace(/</gi, "&lt;").replace(/>/gi, "&gt;").replace(/ /gi, "&nbsp;"),
-							changedContent: $(".changed").val().replace(/</gi, "&lt;").replace(/>/gi, "&gt;").replace(/ /gi, "&nbsp;"),
+							originalContent: $("#answer").val().replace(/</gi, "&lt;").replace(/>/gi, "&gt;").replace(/ /gi, "&nbsp;"),
+							changedContent: xmlHttp.responseText.replace(/</gi, "&lt;").replace(/>/gi, "&gt;").replace(/ /gi, "&nbsp;"),
 							diffContainer: ".diff"
 						});
 						var result = document.getElementById("result");
