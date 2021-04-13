@@ -21,14 +21,14 @@
 				<div class="diff"></div>
 			</div>
 		</div>
-		<script src="/memorization-test/js/include.js"></script>
+		<script src="/curritest/js/include.js"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.js"></script>
 		<script src="https://stackpath.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-		<script src="/memorization-test/js/common.js"></script>
+		<script src="/curritest/js/common.js"></script>
 
-		<script src="/memorization-test/js/diff_match_patch.js"></script>
-		<script src="/memorization-test/js/jquery.pretty-text-diff.min.js"></script>
+		<script src="/curritest/js/diff_match_patch.js"></script>
+		<script src="/curritest/js/jquery.pretty-text-diff.min.js"></script>
 		<script>
 			$('#diffButton').click(function(){
 				var xmlHttp = new XMLHttpRequest();
@@ -43,7 +43,7 @@
 						result.innerHTML = result.innerHTML.replace(/<br>/gi, "<br><br>");
 					}
 				};
-				xmlHttp.open("GET", "/memorization-test/answer.txt", true);
+				xmlHttp.open("GET", "/curritest/answer.txt", true);
 				xmlHttp.send();
 			});
 		</script>
