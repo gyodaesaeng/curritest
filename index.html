@@ -4,49 +4,62 @@
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
-		<title>2015 교육과정 총론 테스트</title>
-		<style type="text/css">
-			ins {
-				background-color: #c6ffc6;
-				text-decoration: none;
-			}
-
-			del {
-				background-color: #ffc6c6;
-			}
-		  </style>
+		<title>2015 개정 교육과정 총론 테스트</title>
 	</head>
 	<body>
-		<div class="m-1">
-			<div class="mb-2">
-				<textarea id ="answer" class="form-control" rows="20"></textarea>
+		<div class="container-fluid p-5 text-center">
+			<h1 class="p-5">2015 개정 교육과정 총론 테스트</h1>
+			<div class="row g-5">
+				<div class="col">
+					<select class="form-select p-3" id="start">
+						<option selected>시작</option>
+						<option value="0">교육과정의 성격</option>
+						<option value="1">Ⅰ. 교육과정 구성의 방향</option>
+						<option value="2">Ⅰ-1. 추구하는 인간상</option>
+						<option value="3">Ⅰ-2. 교육과정 구성의 중점</option>
+						<option value="4">Ⅰ-3. 학교 급별 교육 목표</option>
+						<option value="5">Ⅱ. 학교 급별 교육과정 편성-운영의 기준</option>
+						<option value="6">Ⅱ-1. 기본 사항</option>
+						<option value="7">Ⅱ-2. 초등학교</option>
+						<option value="8">Ⅲ. 학교 교육과정 편성-운영</option>
+						<option value="9">Ⅲ-1. 기본 사항</option>
+						<option value="10">Ⅲ-2. 교수-학습</option>
+						<option value="11">Ⅲ-3. 평가</option>
+						<option value="12">Ⅲ-4. 모든 학생을 위한 교육 기회의 제공</option>
+						<option value="13">Ⅳ. 학교 교육과정 지원</option>
+						<option value="14">Ⅳ-1. 국가 수준의 지원</option>
+						<option value="15">Ⅳ-2. 교육청 수준의 지원</option>
+					</select>
+				</div>
+				<div class="col">
+					<select class="form-select p-3" id="end">
+						<option selected>끝</option>
+						<option value="0">교육과정의 성격</option>
+						<option value="1" disabled>Ⅰ. 교육과정 구성의 방향</option>
+						<option value="2">Ⅰ-1. 추구하는 인간상</option>
+						<option value="3">Ⅰ-2. 교육과정 구성의 중점</option>
+						<option value="4">Ⅰ-3. 학교 급별 교육 목표</option>
+						<option value="5" disabled>Ⅱ. 학교 급별 교육과정 편성-운영의 기준</option>
+						<option value="6">Ⅱ-1. 기본 사항</option>
+						<option value="7">Ⅱ-2. 초등학교</option>
+						<option value="8" disabled>Ⅲ. 학교 교육과정 편성-운영</option>
+						<option value="9">Ⅲ-1. 기본 사항</option>
+						<option value="10">Ⅲ-2. 교수-학습</option>
+						<option value="11">Ⅲ-3. 평가</option>
+						<option value="12">Ⅲ-4. 모든 학생을 위한 교육 기회의 제공</option>
+						<option value="13" disabled>Ⅳ. 학교 교육과정 지원</option>
+						<option value="14">Ⅳ-1. 국가 수준의 지원</option>
+						<option value="15">Ⅳ-2. 교육청 수준의 지원</option>
+					</select>
+				</div>
 			</div>
-			<button type="button" id="diffButton" class="btn btn-primary mb-2" autocomplete="off">채점 하기</button>
-			<div id="diffText">
-				<div class="diff"></div>
-			</div>
+			<button class="btn btn-primary mt-5" id="go">시작하기</button>
 		</div>
 		<script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
 		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/diff_match_patch/20121119/diff_match_patch.js" integrity="sha512-5YZxUisfaneUbwv58nPp10qwt6DefHuJ+iAfvPoABZAYwLg4WGJHITaLpyyxJdrljfc0ggUoWc87Z0lfoDS84Q==" crossorigin="anonymous"></script>
-		<script src="js/jquery.pretty-text-diff.min.js" type="text/javascript"></script>
-		<script src="js/urlParameter.js" type="text/javascript"></script>
 		<script>
-			$('#diffButton').click(function(){
-				var xmlHttp = new XMLHttpRequest();
-				xmlHttp.onreadystatechange = function() {
-					if(this.status == 200 && this.readyState == this.DONE) {
-						$("#diffText").prettyTextDiff({
-							originalContent: $("#answer").val(),
-							changedContent: xmlHttp.responseText,
-							diffContainer: ".diff"
-						});
-						var result = document.getElementById("diffText");
-						result.innerHTML = result.innerHTML.replace(/<br>/gi, "<br><br>");
-					}
-				};
-				xmlHttp.open("GET", urlParameter("range") == "all" ? "curriculum.txt" : "answer.txt", true);
-				xmlHttp.send();
+			$("#go").click(function() {
+				location.href = "test.html?start=" + $("#start option:selected").val() + "&end=" + $("#end option:selected").val();
 			});
 		</script>
 	</body>
